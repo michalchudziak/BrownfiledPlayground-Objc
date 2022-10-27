@@ -1,11 +1,6 @@
-//
-//  ViewController.m
-//  BrownfieldPlayground-Objc
-//
-//  Created by Michal Chudziak on 14/10/2022.
-//
-
 #import "ViewController.h"
+#import "BridgeManager.h"
+#import <React/RCTRootView.h>
 
 @interface ViewController ()
 
@@ -15,8 +10,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    RCTBridge* bridge = [[BridgeManager shared] bridge];
+    self.view = [[RCTRootView alloc] initWithBridge:bridge moduleName:@"MyReactComponent" initialProperties:@{@"text": @"Hello world!"}];
 }
 
-
 @end
+
